@@ -7,7 +7,7 @@ const schema = require('./schema/schema');
 require('dotenv').config()
 
 const app = express();
-console.log(process.env.DB_USER,'fdslj')
+
 // Replace with your mongoLab URI
 const MONGO_URI = `mongodb://${process.env.DB_USER}:${process.env.DB_PASS}@ds125342.mlab.com:25342/persian-lyrics`;
 if (!MONGO_URI) {
