@@ -17,13 +17,3 @@ export default class SongList extends Component {
     return <div>songList</div>;
   }
 }
-
-// const query = gql`
-// {
-//   songs {
-//     title
-//   }
-// }
-// `;
-
-// export default graphql(query)(SongList)
