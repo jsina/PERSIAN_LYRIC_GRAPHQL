@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { graphql } from "react-apollo";
 import gql from "graphql-tag";
+import { Link, hashHistory } from 'react-router';
 
 const mutation = gql`
   mutation AddSong($title: String){
@@ -26,12 +27,15 @@ export default class CreateSong extends Component {
       variables: {
         title: this.state.title,
       }
-    });
+    }).then(() => this.props.router.push("/"));
   };
 
   render() {
     return (
       <div>
+        <Link to="/">
+          Back
+        </Link>
         <h3>Create a Song</h3>
         <form onSubmit={this.onSubmit.bind(this)}>
           <label>Song title</label>
