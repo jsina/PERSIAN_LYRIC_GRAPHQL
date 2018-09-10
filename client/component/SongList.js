@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import gql from "graphql-tag";
 import { graphql } from "react-apollo";
-import { Link } from 'react-router';
+import { Link } from "react-router-dom";
 
-const query = gql`
+export const songListQuery = gql`
   {
     songs {
       id
@@ -12,7 +12,7 @@ const query = gql`
   }
 `;
 
-@graphql(query)
+@graphql(songListQuery)
 export default class SongList extends Component {
   renderSong() {
     return this.props.data.songs.map(song => (
