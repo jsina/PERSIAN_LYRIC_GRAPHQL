@@ -4,16 +4,8 @@ import gql from "graphql-tag";
 import { Link } from "react-router-dom";
 import { Mutation } from "react-apollo";
 
-import { songListQuery } from "./SongList";
-
-const mutation = gql`
-  mutation AddSong($title: String) {
-    addSong(title: $title) {
-      id
-      title
-    }
-  }
-`;
+import songListQuery from '../query/fetchSongs';
+import addSong from '../mutation/addSong';
 
 export default class CreateSong extends Component {
   constructor(props) {
@@ -24,9 +16,9 @@ export default class CreateSong extends Component {
     this.onSubmit = this.onSubmit.bind(this);
   }
 
-  onSubmit(event, cb) {
+  onSubmit(event, addSong) {
     event.preventDefault();
-    cb({
+    addSong({
       variables: {
         title: this.state.title
       },
@@ -40,7 +32,7 @@ export default class CreateSong extends Component {
 
   render() {
     return (
-      <Mutation mutation={mutation}>
+      <Mutation mutation={addSong}>
         {addSong => (
           <div>
             <Link to="/">
