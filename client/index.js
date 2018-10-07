@@ -2,16 +2,24 @@ import React from "react";
 import ReactDOM from "react-dom";
 import ApolloClient from "apollo-client";
 import { ApolloProvider } from "react-apollo";
+import { BrowserRouter, HashRouter } from "react-router-dom";
+import { HttpLink } from 'apollo-link-http';
+import { InMemoryCache } from 'apollo-cache-inmemory';
 
-import SongList from './component/SongList';
+import App from "./component/App";
 
-const client = new ApolloClient({});
+const client = new ApolloClient({
+  link: new HttpLink(),
+  cache: new InMemoryCache()
+});
 
 const Root = () => {
   return (
-    <ApolloProvider client={client}>
-      <SongList />
-    </ApolloProvider>
+    <HashRouter>
+      <ApolloProvider client={client}>
+        <App />
+      </ApolloProvider>
+    </HashRouter>
   );
 };
 
