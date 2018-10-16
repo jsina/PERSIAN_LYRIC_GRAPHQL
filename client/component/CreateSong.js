@@ -1,6 +1,5 @@
 "use strict";
 import React, { Component } from "react";
-import gql from "graphql-tag";
 import { Link } from "react-router-dom";
 import { Mutation } from "react-apollo";
 
