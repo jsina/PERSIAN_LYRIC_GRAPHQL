@@ -7,38 +7,43 @@ import deleteSong from "../mutation/deleteSong";
 
 class SongList extends Component {
   renderSong(songs) {
-    return songs.map(song => (
-      <li key={song.id} className="collection-item">
-        {song.title}
-        <a href="#" onClick={() => this.deleteSong(song.id)} style={deleteIcon}>
-          <i className="material-icons deleteIcon">close</i>
+    return songs.map(({id, title}) => (
+      <li key={id} className="collection-item">
+        {title}
+        <a href="#" onClick={() => this.deleteSong(id)} style={deleteIcon}>
+          <i className="material-icons">delete</i>
         </a>
       </li>
     ));
   }
 
   deleteSong = id => {
-    this.props.deleteSong({
-      variables: { id },
-      refetchQueries: [
-        {
-          query: songListQuery
-        },
-      ]
-    }).then(() => alert('Song was deleted successfully'));
+    this.props
+      .deleteSong({
+        variables: { id },
+        refetchQueries: [
+          {
+            query: songListQuery
+          }
+        ]
+      })
+      .then(({data: { deleteSong }}) => {
+        alert(`"${deleteSong.title}" Song has deleted successfully`)
+      })
+      .catch(err => alert(err));
   };
 
   render() {
     const {
       loading: songListQueryLoading,
       error: songListQueryError,
-      songs,
+      songs
     } = this.props.songListQuery;
     const {
       loading: deleteSongLoading,
-      error: deleteSongError,
+      error: deleteSongError
     } = this.props.deleteSong;
-    
+
     if (songListQueryLoading || deleteSongLoading) return <div>Loading...</div>;
     if (songListQueryError || deleteSongError) return <div>Error :(</div>;
     return (
