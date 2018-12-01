@@ -20,12 +20,13 @@ class SongList extends Component {
   }
 
   deleteSong = id => {
+    console.log(id, 'id');
     this.props
       .deleteSong({
         variables: { id },
         refetchQueries: [
           {
-            query: songListQuery
+            query: songList
           }
         ]
       })
