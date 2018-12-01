@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { Query, compose, graphql } from "react-apollo";
 
-import {songList} from "../query/fetchSongs";
+import songList from "../query/fetchSongs";
 import deleteSong from "../mutation/deleteSong";
 
 class SongList extends Component {
@@ -20,7 +20,6 @@ class SongList extends Component {
   }
 
   deleteSong = id => {
-    console.log(id, 'id');
     this.props
       .deleteSong({
         variables: { id },

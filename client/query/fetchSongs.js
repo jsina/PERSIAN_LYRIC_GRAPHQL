@@ -1,10 +1,10 @@
-import gql from 'graphql-tag';
+import gql from "graphql-tag";
 
-export const songList =  gql`
-    query {
-        songs {
-            id
-            title
-        }
+export default gql`
+  query {
+    songs {
+      id
+      title
     }
+  }
 `;
