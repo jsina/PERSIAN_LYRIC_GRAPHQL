@@ -35,8 +35,7 @@ export default class CreateSong extends Component {
         {addSong => (
           <div>
             <Link to="/">
-            <i className="material-icons">arrow_back</i>
-
+              <i className="material-icons">arrow_back</i>
             </Link>
             <h3>Create a Song</h3>
             <form

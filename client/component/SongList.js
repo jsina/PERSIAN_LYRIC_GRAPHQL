@@ -2,14 +2,16 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { Query, compose, graphql } from "react-apollo";
 
-import songListQuery from "../query/fetchSongs";
+import {songList} from "../query/fetchSongs";
 import deleteSong from "../mutation/deleteSong";
 
 class SongList extends Component {
   renderSong(songs) {
     return songs.map(({id, title}) => (
       <li key={id} className="collection-item">
-        {title}
+        <Link to={`/song/${id}`}>
+          {title}
+        </Link>
         <a href="#" onClick={() => this.deleteSong(id)} style={deleteIcon}>
           <i className="material-icons">delete</i>
         </a>
@@ -61,7 +63,7 @@ class SongList extends Component {
 }
 
 export default compose(
-  graphql(songListQuery, {
+  graphql(songList, {
     name: "songListQuery"
   }),
   graphql(deleteSong, {
