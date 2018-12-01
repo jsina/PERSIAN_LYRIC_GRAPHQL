@@ -18,6 +18,7 @@ LyricSchema.statics.like = function(id) {
   return Lyric.findById(id)
     .then(lyric => {
       ++lyric.likes;
+      console.log(lyric)
       return lyric.save();
     })
 }

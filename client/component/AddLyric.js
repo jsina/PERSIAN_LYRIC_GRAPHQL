@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Mutation } from "react-apollo";
 
 import addLyricToSong from "../mutation/addLyricToSong";
-import { songDetails } from "../query/songDetails";
+import songDetails from "../query/songDetails";
 
 export default class AddLyric extends Component {
   state = {
