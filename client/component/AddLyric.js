@@ -19,19 +19,16 @@ export default class AddLyric extends Component {
         content: this.state.content,
         songId: songId
       },
-      refetchQueries: [
-        {
-          query: songDetails,
-          variables: {
-            id: songId
-          }
-        }
-      ]
-    }).then(
-      () => this.setState({ content: "" })
-    ).catch(
-      err => this.setState({ content: "" })
-    );
+      // refetchQueries: [
+      //   {
+      //     query: songDetails,
+      //     variables: {
+      //       id: songId
+      //     }
+      //   }
+      // ]
+    });
+    this.setState({ content: "" })
   };
 
   render() {

@@ -7,19 +7,6 @@ import AddLyric from "./AddLyric";
 import LyricList from './LyricList';
 
 export default class SongDetails extends Component {
-  lyricsList = lyrics =>
-    lyrics.map(lyric => (
-      <tr key={lyric.id}>
-        <td>{lyric.content}</td>
-        <td>{lyric.likes}</td>
-        <td>
-          <a href="#" onClick={() => {}} style={style}>
-            <i className="material-icons">thumb_up</i>
-          </a>
-        </td>
-      </tr>
-    ));
-
   render() {
     const id = this.props.match.params.id;
     return (
@@ -43,7 +30,3 @@ export default class SongDetails extends Component {
     );
   }
 }
-
-const style = {
-  float: "right"
-};
