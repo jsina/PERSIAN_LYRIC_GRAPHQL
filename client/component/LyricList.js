@@ -11,11 +11,6 @@ export default class LyricList extends Component {
       variables: {
         id: id
       },
-    //   refetchQueries: [
-    //     {
-    //       query: songDetails
-    //     }
-    //   ]
     }).catch((err) => console.log(err));
   };
   render() {
