@@ -21,11 +21,11 @@ export default class CreateSong extends Component {
       variables: {
         title: this.state.title
       },
-      // refetchQueries: [
-      //   {
-      //     query: songListQuery
-      //   }
-      // ]
+      refetchQueries: [
+        {
+          query: songListQuery
+        }
+      ]
     }).then(() => this.props.history.push("/"));
   }
 
