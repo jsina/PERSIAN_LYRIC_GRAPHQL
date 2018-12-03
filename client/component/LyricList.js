@@ -4,14 +4,21 @@ import { Mutation } from "react-apollo";
 import likeLyric from "../mutation/likeLyric";
 import songDetails from "../query/songDetails";
 export default class LyricList extends Component {
-  submitHandler = (event, likeLyric, id) => {
-    console.log(likeLyric, id, event);
+  submitHandler = (event, likeLyric, id, likes) => {
     event.preventDefault();
     likeLyric({
       variables: {
         id: id
       },
-    }).catch((err) => console.log(err));
+      optimisticResponse: {
+        __typename: 'Mutation',
+        likeLyric: {
+          __typename: 'LyricType',
+          id,
+          likes: likes + 1,
+        }
+      }
+    }).catch((err) => alert(err));
   };
   render() {
     const { lyrics } = this.props;
@@ -35,7 +42,7 @@ export default class LyricList extends Component {
                       <a
                         href="#"
                         onClick={event =>
-                          this.submitHandler(event, likeLyric, lyric.id)
+                          this.submitHandler(event, likeLyric, lyric.id, lyric.likes)
                         }
                         style={style}
                       >
