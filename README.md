@@ -6,6 +6,6 @@ you have to install packages with command
 `DB_USER=your mongo user db`
 
 `DB_PASS=your mongo pass db`
-`
+
 # for running project:
 `npm run dev`
