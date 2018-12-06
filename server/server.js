@@ -9,7 +9,7 @@ require('dotenv').config()
 const app = express();
 
 // Replace with your mongoLab URI
-const MONGO_URI = `mongodb://${process.env.DB_USER}:${process.env.DB_PASS}@ds125342.mlab.com:25342/persian-lyrics`;
+const MONGO_URI = `mongodb://${process.env.DB_USER}:${process.env.DB_PASS}${process.env.DB_URI}`;
 if (!MONGO_URI) {
   throw new Error('You must provide a MongoLab URI');
 }
