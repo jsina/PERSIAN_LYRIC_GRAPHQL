@@ -7,5 +7,6 @@ you have to install packages with command
 
 `DB_PASS=your mongo pass db`
 
+`DB_URI= your mongo uri`
 # for running project:
 `npm run dev`
